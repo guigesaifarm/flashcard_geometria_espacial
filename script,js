@@ -1,0 +1,49 @@
+<script>
+        const cardsData = [
+            { id: 1, title: "Postulado do Ponto e Reta", desc: "Por dois pontos distintos passa uma única reta." },
+            { id: 2, title: "Postulado do Plano", desc: "Três pontos não colineares determinam um único plano." },
+            { id: 3, title: "Reta e Plano", desc: "Se dois pontos de uma reta pertencem a um plano, a reta está contida nesse plano." },
+            { id: 4, title: "Intersecção de Planos", desc: "Se dois planos distintos têm um ponto em comum, a intersecção deles é uma reta." },
+            { id: 5, title: "Retas Paralelas", desc: "Duas retas são paralelas se pertencem ao mesmo plano e não possuem ponto em comum." },
+            { id: 6, title: "Retas Reversas", desc: "Duas retas são reversas se não pertencem ao mesmo plano (não se cruzam nem são paralelas)." },
+            { id: 7, title: "Reta Perpendicular ao Plano", desc: "Uma reta é perpendicular a um plano se for perpendicular a todas as retas do plano que passam pela intersecção." },
+            { id: 8, title: "Teorema das Três Perpendiculares", desc: "Se uma reta r é perpendicular a um plano α em P, e por P passa s contida em α, qualquer oblíqua a α ortogonal a s forma um ângulo reto com r." },
+            { id: 9, title: "Planos Paralelos", desc: "Dois planos são paralelos se não possuem nenhum ponto em comum." },
+            { id: 10, title: "Relação de Euler (Poliedros)", desc: "Em todo poliedro convexo vale a relação entre Vértices, Arestas e Faces.", formula: "V - A + F = 2" },
+            { id: 11, title: "Soma dos Ângulos das Faces", desc: "A soma dos ângulos de todas as faces de um poliedro convexo.", formula: "S = (V - 2) * 360°" },
+            { id: 12, title: "Princípio de Cavalieri", desc: "Se dois sólidos têm a mesma altura e seções transversais de áreas iguais em qualquer altura, eles têm o mesmo volume." },
+            { id: 13, title: "Cubo (Hexaedro)", desc: "Área Total e Volume de um cubo de aresta 'a'.", formula: "A = 6a² | V = a³" },
+            { id: 14, title: "Paralelepípedo", desc: "Diagonal, Área Total e Volume de dimensões a, b, c.", formula: "D = √(a²+b²+c²) | A = 2(ab+bc+ac) | V = a·b·c" },
+            { id: 15, title: "Prisma Genérico", desc: "Área Lateral, Área Total e Volume de um prisma de base Ab e altura h.", formula: "A_total = 2·Ab + A_lateral | V = Ab · h" },
+            { id: 16, title: "Pirâmide", desc: "Área Total e Volume de uma pirâmide qualquer.", formula: "V = (1/3) · Ab · h" },
+            { id: 17, title: "Cilindro Circular Reto", desc: "Área Lateral, Área Total e Volume de raio r e altura h.", formula: "Al = 2πrh | At = 2πr(r+h) | V = πr²h" },
+            { id: 18, title: "Cone Circular Reto", desc: "Geratriz (g² = r² + h²), Área Total e Volume.", formula: "At = πr(g + r) | V = (1/3)πr²h" },
+            { id: 19, title: "Esfera", desc: "Área da superfície esférica e Volume da esfera de raio R.", formula: "A = 4πR² | V = (4/3)πR³" },
+            { id: 20, title: "Tronco de Cone/Pirâmide", desc: "Volume do tronco de bases B (maior) e b (menor) com altura h.", formula: "V = (h/3) · (B + √(B·b) + b)" }
+        ];
+
+        const grid = id = document.getElementById('flashcard-grid');
+
+        cardsData.forEach(card => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'card';
+            cardEl.onclick = () => cardEl.classList.toggle('flipped');
+
+            const formulaHtml = card.formula ? `<div class="formula">${card.formula}</div>` : '';
+
+            cardEl.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">
+                        <span class="number">#${card.id}</span>
+                        <h3>${card.title}</h3>
+                        <span class="hint">Clique para virar</span>
+                    </div>
+                    <div class="card-back">
+                        <p>${card.desc}</p>
+                        ${formulaHtml}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(cardEl);
+        });
+    </script>
